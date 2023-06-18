@@ -133,17 +133,17 @@ Static libvhdi library.
 Statyczna biblioteka libvhdi.
 
 %package tools
-Summary:	Tools to support the Expert Witness Compression Format
-Summary(pl.UTF-8):	Narzędzia obsługujące format Expert Witness Compression Format
+Summary:	Tools to support the Virtual Hard Disk format
+Summary(pl.UTF-8):	Narzędzia obsługujące format Virtual Hard Disk
 Group:		Applications/File
 Requires:	%{name} = %{version}-%{release}
 Requires:	libfuse >= 2.6
 
 %description tools
-Tools to support the Expert Witness Compression Format.
+Tools to support the Virutal Hard Disk format.
 
 %description tools -l pl.UTF-8
-Narzędzia obsługujące format Expert Witness Compression Format.
+Narzędzia obsługujące format Virutal Hard Disk.
 
 %package -n python-pyvhdi
 Summary:	Python 2 bindings for libvhdi library
