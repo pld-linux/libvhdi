@@ -8,7 +8,7 @@
 %endif
 # see m4/${libname}.m4 />= for required version of particular library
 %define		libbfio_ver		20201125
-%define		libcdata_ver		20220115
+%define		libcdata_ver		20230108
 %define		libcerror_ver		20120425
 %define		libcfile_ver		20160409
 %define		libclocale_ver		20120425
@@ -19,7 +19,7 @@
 %define		libfcache_ver		20191109
 %define		libfdata_ver		20201129
 %define		libfguid_ver		20120426
-%define		libuna_ver		20210801
+%define		libuna_ver		20230702
 Summary:	Library to access the Virtual Hard Disk image format
 Summary(pl.UTF-8):	Biblioteka dostępu do formatu obrazów Virtual Hard Disk
 Name:		libvhdi
