@@ -1,11 +1,9 @@
 #
 # Conditional build:
-%bcond_without	python	# Python bindings (any)
-%bcond_without	python2	# CPython 2.x bindings
+%bcond_without	python	# Python (3) bindings
 %bcond_without	python3	# CPython 3.x bindings
 #
 %if %{without python}
-%undefine	with_python2
 %undefine	with_python3
 %endif
 # see m4/${libname}.m4 />= for required version of particular library
@@ -25,13 +23,13 @@
 Summary:	Library to access the Virtual Hard Disk image format
 Summary(pl.UTF-8):	Biblioteka dostępu do formatu obrazów Virtual Hard Disk
 Name:		libvhdi
-Version:	20221124
+Version:	20231127
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/libyal/libvhdi/releases
 Source0:	https://github.com/libyal/libvhdi/releases/download/%{version}/%{name}-alpha-%{version}.tar.gz
-# Source0-md5:	1d45d0b78dcf2244758e05d694990d45
+# Source0-md5:	796be759a9ff68ac18d768d7b396cf92
 URL:		https://github.com/libyal/libvhdi/
 BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake >= 1.6
@@ -51,8 +49,7 @@ BuildRequires:	libfguid-devel >= %{libfguid_ver}
 BuildRequires:	libfuse-devel >= 2.6
 BuildRequires:	libuna-devel >= %{libuna_ver}
 BuildRequires:	libtool >= 2:2
-%{?with_python2:BuildRequires:	python-devel >= 1:2.5}
-%{?with_python3:BuildRequires:	python3-devel >= 1:3.2}
+%{?with_python3:BuildRequires:	python3-devel >= 1:3.7}
 Requires:	libbfio >= %{libbfio_ver}
 Requires:	libcdata >= %{libcdata_ver}
 Requires:	libcerror >= %{libcerror_ver}
@@ -145,18 +142,6 @@ Tools to support the Virutal Hard Disk format.
 %description tools -l pl.UTF-8
 Narzędzia obsługujące format Virutal Hard Disk.
 
-%package -n python-pyvhdi
-Summary:	Python 2 bindings for libvhdi library
-Summary(pl.UTF-8):	Wiązania Pythona 2 do biblioteki libvhdi
-Group:		Libraries/Python
-Requires:	%{name} = %{version}-%{release}
-
-%description -n python-pyvhdi
-Python 2 bindings for libvhdi library.
-
-%description -n python-pyvhdi -l pl.UTF-8
-Wiązania Pythona 2 do biblioteki libvhdi.
-
 %package -n python3-pyvhdi
 Summary:	Python 3 bindings for libvhdi library
 Summary(pl.UTF-8):	Wiązania Pythona 3 do biblioteki libvhdi
@@ -180,8 +165,8 @@ Wiązania Pythona 3 do biblioteki libvhdi.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{?with_python2:--enable-python2} \
-	%{?with_python3:--enable-python3}
+	PYTHON_VERSION=3 \
+	%{?with_python3:--enable-python}
 %{__make}
 
 %install
@@ -193,9 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libvhdi.la
 
-%if %{with python2}
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/pyvhdi.{la,a}
-%endif
 %if %{with python3}
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/pyvhdi.{la,a}
 %endif
@@ -229,12 +211,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/vhdiinfo
 %attr(755,root,root) %{_bindir}/vhdimount
 %{_mandir}/man1/vhdiinfo.1*
-
-%if %{with python2}
-%files -n python-pyvhdi
-%defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/pyvhdi.so
-%endif
 
 %if %{with python3}
 %files -n python3-pyvhdi
