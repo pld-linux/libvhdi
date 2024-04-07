@@ -23,13 +23,13 @@
 Summary:	Library to access the Virtual Hard Disk image format
 Summary(pl.UTF-8):	Biblioteka dostępu do formatu obrazów Virtual Hard Disk
 Name:		libvhdi
-Version:	20231127
+Version:	20240303
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/libyal/libvhdi/releases
 Source0:	https://github.com/libyal/libvhdi/releases/download/%{version}/%{name}-alpha-%{version}.tar.gz
-# Source0-md5:	796be759a9ff68ac18d768d7b396cf92
+# Source0-md5:	97873083295d37668feaa606342bd86c
 URL:		https://github.com/libyal/libvhdi/
 BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake >= 1.6
