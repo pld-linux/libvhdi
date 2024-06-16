@@ -23,13 +23,13 @@
 Summary:	Library to access the Virtual Hard Disk image format
 Summary(pl.UTF-8):	Biblioteka dostępu do formatu obrazów Virtual Hard Disk
 Name:		libvhdi
-Version:	20240303
+Version:	20240509
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/libyal/libvhdi/releases
 Source0:	https://github.com/libyal/libvhdi/releases/download/%{version}/%{name}-alpha-%{version}.tar.gz
-# Source0-md5:	97873083295d37668feaa606342bd86c
+# Source0-md5:	a355b620b3e1c4a2e31465b877149dcd
 URL:		https://github.com/libyal/libvhdi/
 BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake >= 1.6
@@ -46,7 +46,8 @@ BuildRequires:	libcthreads-devel >= %{libcthreads_ver}
 BuildRequires:	libfcache-devel >= %{libfcache_ver}
 BuildRequires:	libfdata-devel >= %{libfdata_ver}
 BuildRequires:	libfguid-devel >= %{libfguid_ver}
-BuildRequires:	libfuse-devel >= 2.6
+# or libfuse >= 2.6
+BuildRequires:	libfuse3-devel >= 3.0
 BuildRequires:	libuna-devel >= %{libuna_ver}
 BuildRequires:	libtool >= 2:2
 %{?with_python3:BuildRequires:	python3-devel >= 1:3.7}
@@ -134,7 +135,7 @@ Summary:	Tools to support the Virtual Hard Disk format
 Summary(pl.UTF-8):	Narzędzia obsługujące format Virtual Hard Disk
 Group:		Applications/File
 Requires:	%{name} = %{version}-%{release}
-Requires:	libfuse >= 2.6
+Requires:	libfuse3 >= 3.0
 
 %description tools
 Tools to support the Virutal Hard Disk format.
